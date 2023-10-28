@@ -35,3 +35,17 @@ export type TPagination<T> = {
     totalPages: number;
     paginatedData?: T[][];
 };
+
+export type TFilterConfigOptions = {
+    label: string;
+    value: string;
+    tableColumnParam?: string;
+    criteria?: (item: string) => boolean;
+}
+
+export type TFilterConfig = {
+    name: string;
+    label: string;
+    type: 'Text' | 'Select';
+    options?: TFilterConfigOptions[]
+}

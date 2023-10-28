@@ -1,5 +1,5 @@
 import React from 'react';
-import { TPagination } from '../types';
+import { TPagination } from '../utils/types';
 
 type Props = {
   pagination: TPagination<any>;
