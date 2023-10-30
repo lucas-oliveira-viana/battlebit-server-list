@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Table from './components/molecules/Table';
-import { TServer, TServerResponse } from './utils/types';
-import { useFilter, usePagination } from './utils/hooks';
+import { TServer, TServerResponse } from './common/types';
+import { useFilter, usePagination } from './common/hooks';
 import Pagination from './components/molecules/Pagination';
 import Filters from './components/molecules/Filters';
-import { COLUMN_CONFIG, FILTER_CONFIG, INITIAL_PAGINATION_CONFIG } from './utils/config';
-import { fetchServers } from './utils/api';
+import { COLUMN_CONFIG, FILTER_CONFIG, INITIAL_PAGINATION_CONFIG } from './common/config';
+import { fetchServers } from './common/api';
 import Loading from './assets/loading.svg';
 import Icon from './assets/icon.png';
 import Background from './assets/bg.jpg';

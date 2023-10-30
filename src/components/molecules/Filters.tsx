@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { TFilterConfig, TFilterConfigOptions } from '../../utils/types';
+import { TFilterConfig, TFilterConfigOptions } from '../../common/types';
 import Button from '../atoms/Button';
 import Select from '../atoms/Select';
 import Input from '../atoms/Input';

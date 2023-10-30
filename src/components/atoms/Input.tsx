@@ -1,5 +1,5 @@
 import React from 'react';
-import { TInputProps } from '../../utils/types';
+import { TInputProps } from '../../common/types';
 
 export default function Input({ value, name, handleChange }: TInputProps) {
   return (

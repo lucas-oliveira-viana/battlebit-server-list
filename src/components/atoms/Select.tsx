@@ -1,5 +1,5 @@
 import React from 'react';
-import { TFilterConfigOptions, TInputProps } from '../../utils/types';
+import { TFilterConfigOptions, TInputProps } from '../../common/types';
 
 type SelectProps = TInputProps & {
   options: TFilterConfigOptions[];

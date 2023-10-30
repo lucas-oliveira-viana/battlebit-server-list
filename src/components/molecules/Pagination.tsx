@@ -1,5 +1,5 @@
 import React from 'react';
-import { TPagination } from '../../utils/types';
+import { TPagination } from '../../common/types';
 import Button from '../atoms/Button';
 
 type Props = {
