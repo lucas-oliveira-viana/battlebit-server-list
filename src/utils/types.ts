@@ -49,3 +49,12 @@ export type TFilterConfig = {
     type: 'Text' | 'Select';
     options?: TFilterConfigOptions[]
 }
+
+export type TInputProps = {
+    value: any;
+    name: string;
+    handleChange: (
+        name: string,
+        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+    ) => void;
+};

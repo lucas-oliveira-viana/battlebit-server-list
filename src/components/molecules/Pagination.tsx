@@ -1,6 +1,6 @@
 import React from 'react';
-import { TPagination } from '../utils/types';
-import Button from './Button';
+import { TPagination } from '../../utils/types';
+import Button from '../atoms/Button';
 
 type Props = {
   pagination: TPagination<any>;

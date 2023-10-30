@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Table from './components/Table';
+import Table from './components/molecules/Table';
 import { TServer, TServerResponse } from './utils/types';
 import { useFilter, usePagination } from './utils/hooks';
-import Pagination from './components/Pagination';
-import Filters from './components/Filters';
+import Pagination from './components/molecules/Pagination';
+import Filters from './components/molecules/Filters';
 import { COLUMN_CONFIG, FILTER_CONFIG, INITIAL_PAGINATION_CONFIG } from './utils/config';
 import { fetchServers } from './utils/api';
 import Loading from './assets/loading.svg';
