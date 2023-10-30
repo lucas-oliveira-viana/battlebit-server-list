@@ -2,7 +2,7 @@
 
 ## Background
 
-BattleBit Server List is a website for players to check the server status while they are outside of the game using [BattleBit PUBLIC API](https://publicapi.battlebit.cloud/Servers/GetServerList), the content includes a paginated table with filters.
+BattleBit Server List is a website for players to check the server status while they are outside of the game using [BattleBit Servers Public API](https://publicapi.battlebit.cloud/Servers/GetServerList), the content includes a paginated table with filters.
 
 ## Development
 
