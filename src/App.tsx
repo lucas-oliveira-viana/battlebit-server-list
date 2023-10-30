@@ -4,18 +4,21 @@ import { TServer, TServerResponse } from './utils/types';
 import { useFilter, usePagination } from './utils/hooks';
 import Pagination from './components/Pagination';
 import Filters from './components/Filters';
-import { FILTER_CONFIG, INITIAL_PAGINATION_CONFIG } from './utils/config';
+import { COLUMN_CONFIG, FILTER_CONFIG, INITIAL_PAGINATION_CONFIG } from './utils/config';
 import { fetchServers } from './utils/api';
+import Loading from './assets/loading.svg';
+import Icon from './assets/icon.png';
 
 function App() {
   const [servers, setServers] = useState<TServer[]>([]);
   const { pagination, setPaginationData, setCurrentPage } = usePagination<TServer>(
     INITIAL_PAGINATION_CONFIG,
   );
-  const { setFilter, filteredData: filteredServers } = useFilter<TServer>(
-    servers,
-    FILTER_CONFIG,
-  );
+  const {
+    filter,
+    setFilter,
+    filteredData: filteredServers,
+  } = useFilter<TServer>(servers, FILTER_CONFIG);
 
   useEffect(() => {
     const getServers = async () => {
@@ -30,31 +33,35 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setCurrentPage(0);
+  }, [filter]);
+
+  useEffect(() => {
     setPaginationData(filteredServers);
   }, [filteredServers]);
+
   function handleServersResponseValue(servers: TServerResponse[]) {
-    return servers
-      .map((server) => ({
-        ...server,
-        Players: `${server.Players}/${server.MaxPlayers} [${server.QueuePlayers}]`,
-      }))
-      .map(({ MaxPlayers, QueuePlayers, IsOfficial, HasPassword, ...rest }) => rest);
+    return servers.map((server) => ({
+      ...server,
+      Players: `${server.Players}/${server.MaxPlayers} [${server.QueuePlayers}]`,
+    }));
   }
 
   return (
     <div className="bg-black h-100 min-h-screen overflow-auto">
-      <header className="h-20 flex justify-center items-center">
-        <span className="text-white text-xl">BattleBit Server List</span>
+      <header className="bg-gray-800 h-20 flex justify-start items-center pl-12">
+        <img src={Icon} className="w-10 h-10 mr-4"/>
+        <span className="text-white text-xl font-bold">BATTLEBIT SERVER LIST</span>
       </header>
-      <section className="min-w-full text-center">
+      <section className="min-w-full text-center mt-4">
         {servers.length ? (
           <div className="pl-12 pr-12 pb-12">
             {pagination.paginatedData && (
               <div className="flex flex-col gap-6">
-                <Filters setFilters={setFilter} fields={FILTER_CONFIG} />
+                <Filters filters={filter} setFilters={setFilter} fields={FILTER_CONFIG} />
                 <div className="overflow-auto border-gray-300 border rounded-lg">
                   <Table
-                    columns={Object.keys(servers[0])}
+                    columns={COLUMN_CONFIG}
                     data={pagination.paginatedData[pagination.currentPage]}
                   ></Table>
                 </div>
@@ -64,7 +71,9 @@ function App() {
             )}
           </div>
         ) : (
-          <span className="text-white text-xl">Carregando...</span>
+          <div className="min-w-full flex justify-center pt-6">
+            <Loading className="w-16 h-16 animate-spin" />
+          </div>
         )}
       </section>
     </div>

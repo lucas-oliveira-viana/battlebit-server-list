@@ -4,7 +4,10 @@ type Props = {
   data: {
     [key: string]: any;
   }[];
-  columns: string[];
+  columns: {
+    label: string;
+    value: string;
+  }[];
 };
 
 function Table({ data, columns }: Props) {
@@ -24,7 +27,7 @@ function Table({ data, columns }: Props) {
                     }`}
                     key={index}
                   >
-                    <span className="text-white">{column}</span>
+                    <span className="text-white">{column.label}</span>
                   </th>
                 );
               })}
@@ -43,7 +46,7 @@ function Table({ data, columns }: Props) {
                       } ${!isLastColumn ? 'border-r' : ''}`}
                       key={colIndex}
                     >
-                      <span className="text-white">{item[column]}</span>
+                      <span className="text-white">{item[column.value]}</span>
                     </td>
                   );
                 })}

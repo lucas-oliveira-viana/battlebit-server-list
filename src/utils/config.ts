@@ -164,3 +164,46 @@ export const FILTER_CONFIG: TFilterConfig[] = [
         ],
     },
 ];
+
+export const COLUMN_CONFIG = [
+    {
+        label: "Name",
+        value: "Name"
+    },
+    {
+        label: "Map",
+        value: "Map"
+    },
+    {
+        label: "Map Size",
+        value: "MapSize"
+    },
+    {
+        label: "Game mode",
+        value: "Gamemode"
+    },
+    {
+        label: "Region",
+        value: "Region"
+    },
+    {
+        label: "Players",
+        value: "Players"
+    },
+    {
+        label: "Hz",
+        value: "Hz"
+    },
+    {
+        label: "Day Night",
+        value: "DayNight"
+    },
+    {
+        label: "Anti Cheat",
+        value: "AntiCheat"
+    },
+    {
+        label: "Build",
+        value: "Build"
+    }
+]
