@@ -10,4 +10,4 @@ This application was made in React with TypeScript and TailwindCSS, using Webpac
 
 ### Deploy
 
-Application is deployed on GitHub Pages, automated with GitHub Actions. [APPLICATION LINK]([URL](https://lucas-oliveira-viana.github.io/battlebit-server-list/)https://lucas-oliveira-viana.github.io/battlebit-server-list/).
+Application is deployed on GitHub Pages, automated with GitHub Actions. [APPLICATION LINK](https://lucas-oliveira-viana.github.io/battlebit-server-list/).
