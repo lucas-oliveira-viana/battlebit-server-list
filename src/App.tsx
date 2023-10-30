@@ -70,7 +70,7 @@ function App() {
                     setFilters={setFilter}
                     fields={FILTER_CONFIG}
                   />
-                  <div className="overflow-auto border-gray-300 border rounded-lg">
+                  <div className="overflow-auto rounded-lg">
                     <Table
                       columns={COLUMN_CONFIG}
                       data={pagination.paginatedData[pagination.currentPage]}
