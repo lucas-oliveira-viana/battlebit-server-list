@@ -195,7 +195,7 @@ export const COLUMN_CONFIG = [
         value: "Hz"
     },
     {
-        label: "Day Night",
+        label: "Period",
         value: "DayNight"
     },
     {
