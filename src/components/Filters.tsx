@@ -16,14 +16,8 @@ type InputProps = {
   ) => void;
 };
 
-type SelectProps = {
-  value: any;
-  name: string;
+type SelectProps = InputProps & {
   options: TFilterConfigOptions[];
-  handleChange: (
-    name: string,
-    event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
-  ) => void;
 };
 
 function Input({ value, name, handleChange }: InputProps) {
@@ -41,7 +35,11 @@ function Input({ value, name, handleChange }: InputProps) {
 
 function Select({ value, name, options, handleChange }: SelectProps) {
   return (
-    <select className="px-2 h-8 rounded-sm border-r-8 border-transparent cursor-pointer" onChange={(e) => handleChange(name, e)} value={value}>
+    <select
+      className="px-2 h-8 rounded-sm border-r-8 border-transparent cursor-pointer"
+      onChange={(e) => handleChange(name, e)}
+      value={value}
+    >
       <option value="">None</option>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
@@ -55,17 +53,19 @@ function Select({ value, name, options, handleChange }: SelectProps) {
 function Filters({ filters, fields, setFilters }: Props) {
   function handleChange(
     field: string,
-    event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+    event?: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
   ) {
     setFilters((curr: any) => {
-      const newFilters = {
-        ...curr,
-        [field]: event.target.value,
-      };
+      const newFilters = !event
+        ? { [field]: '' }
+        : {
+            ...curr,
+            [field]: event.target.value,
+          };
+
+      setFilters(newFilters);
 
       window.localStorage.setItem('filters', JSON.stringify(newFilters));
-
-      return newFilters;
     });
   }
 
@@ -78,28 +78,38 @@ function Filters({ filters, fields, setFilters }: Props) {
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {fields &&
-        fields.length &&
-        fields.map((field) => (
-          <div key={field.name} className="flex flex-col items-start">
-            <label className="text-white">{field.label}</label>
-            {field.type === 'Select' ? (
-              <Select
-                value={filters && filters[field.name] ? filters[field.name] : ''}
-                name={field.name}
-                options={field.options}
-                handleChange={handleChange}
-              />
-            ) : (
-              <Input
-                value={filters && filters[field.name] ? filters[field.name] : ''}
-                name={field.name}
-                handleChange={handleChange}
-              />
-            )}
-          </div>
-        ))}
+    <div>
+      {fields && fields.length && (
+        <div className="flex flex-wrap gap-2 items-end">
+          {fields.map((field) => (
+            <div key={field.name} className="flex flex-col items-start">
+              <label className="text-white">{field.label}</label>
+              {field.type === 'Select' ? (
+                <Select
+                  value={filters && filters[field.name] ? filters[field.name] : ''}
+                  name={field.name}
+                  options={field.options}
+                  handleChange={handleChange}
+                />
+              ) : (
+                <Input
+                  value={filters && filters[field.name] ? filters[field.name] : ''}
+                  name={field.name}
+                  handleChange={handleChange}
+                />
+              )}
+            </div>
+          ))}
+          <button
+            className="px-2 h-8 border rounded-md text-white border-white hover:bg-white hover:text-black"
+            onClick={() => {
+              handleChange('Name');
+            }}
+          >
+            Clear filters
+          </button>
+        </div>
+      )}
     </div>
   );
 }
