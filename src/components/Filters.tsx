@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { TFilterConfig, TFilterConfigOptions } from '../utils/types';
+import Button from './Button';
 
 type Props = {
   filters: any;
@@ -25,7 +26,7 @@ function Input({ value, name, handleChange }: InputProps) {
     <input
       value={value}
       type="text"
-      className="px-2 h-8 rounded-sm"
+      className="text-lg px-4 h-12 font-bold text-zinc-300 bg-semi-transparent rounded-md"
       onChange={(e) => {
         handleChange(name, e);
       }}
@@ -36,13 +37,13 @@ function Input({ value, name, handleChange }: InputProps) {
 function Select({ value, name, options, handleChange }: SelectProps) {
   return (
     <select
-      className="px-2 h-8 rounded-sm border-r-8 border-transparent cursor-pointer"
+      className="text-lg px-4 h-12 font-bold text-zinc-300 bg-semi-transparent rounded-md border-r-8 border-transparent cursor-pointer"
       onChange={(e) => handleChange(name, e)}
       value={value}
     >
-      <option value="">None</option>
+      <option className="text-black" value="">None</option>
       {options.map((option) => (
-        <option key={option.value} value={option.value}>
+        <option className="text-black" key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}
@@ -100,14 +101,13 @@ function Filters({ filters, fields, setFilters }: Props) {
               )}
             </div>
           ))}
-          <button
-            className="px-2 h-8 border rounded-md text-white border-white hover:bg-white hover:text-black"
+          <Button
             onClick={() => {
               handleChange('Name');
             }}
           >
             Clear filters
-          </button>
+          </Button>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TPagination } from '../utils/types';
+import Button from './Button';
 
 type Props = {
   pagination: TPagination<any>;
@@ -36,34 +37,17 @@ function Pagination({ pagination, setCurrentPage }: Props) {
 
   const pages = getAdjacentPages(pagination.currentPage, pagination.totalPages);
 
-  function getButtonsClass(page: number | null) {
-    return `border ${
-      pagination.currentPage === page ? 'bg-white text-black' : 'text-white'
-    } border-white hover:bg-white hover:text-black rounded-md py-2 px-3 mr-3 mb-3`;
-  }
-
   return (
     <>
       {pages.length && (
-        <div>
-          <button className={getButtonsClass(null)} onClick={() => setCurrentPage(0)}>
-            First
-          </button>
+        <div className="flex gap-2 justify-center">
+          <Button onClick={() => setCurrentPage(0)}>First</Button>
           {pages.map((page) => (
-            <button
-              className={getButtonsClass(page)}
-              key={page}
-              onClick={() => setCurrentPage(page)}
-            >
+            <Button className={pagination.currentPage === page ? 'bg-neutral-700' : ''} key={page} onClick={() => setCurrentPage(page)}>
               {page + 1}
-            </button>
+            </Button>
           ))}
-          <button
-            className={getButtonsClass(null)}
-            onClick={() => setCurrentPage(pagination.totalPages - 1)}
-          >
-            Last
-          </button>
+          <Button onClick={() => setCurrentPage(pagination.totalPages - 1)}>Last</Button>
         </div>
       )}
     </>

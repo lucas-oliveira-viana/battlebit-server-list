@@ -14,17 +14,13 @@ function Table({ data, columns }: Props) {
   return (
     <>
       {data && columns && data.length && columns.length ? (
-        <table className="min-w-full bg-gray-800">
+        <table className="min-w-full bg-zinc-600 bg-opacity-50">
           <thead>
             <tr>
               {columns.map((column, index) => {
-                const isFirstColumn = index === 0;
-                const isLastColumn = index === columns.length - 1;
                 return (
                   <th
-                    className={`border-gray-300 p-4 ${!isFirstColumn ? 'border-l' : ''} ${
-                      !isLastColumn ? 'border-r' : ''
-                    }`}
+                    className={`border-gray-300 p-4`}
                     key={index}
                   >
                     <span className="text-white">{column.label}</span>
@@ -37,13 +33,9 @@ function Table({ data, columns }: Props) {
             {data.map((item, rowIndex) => (
               <tr key={rowIndex}>
                 {columns.map((column, colIndex) => {
-                  const isFirstColumn = colIndex === 0;
-                  const isLastColumn = colIndex === columns.length - 1;
                   return (
                     <td
-                      className={`overflow-ellipsis overflow-hidden border-gray-300 p-2 text-center border-t ${
-                        !isFirstColumn ? 'border-l' : ''
-                      } ${!isLastColumn ? 'border-r' : ''}`}
+                      className={`overflow-ellipsis overflow-hidden border-zinc-900 p-2 text-center border-t`}
                       key={colIndex}
                     >
                       <span className="text-white">{item[column.value]}</span>
