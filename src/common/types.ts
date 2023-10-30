@@ -51,7 +51,7 @@ export type TFilterConfig = {
 }
 
 export type TInputProps = {
-    value: any;
+    value: string;
     name: string;
     handleChange: (
         name: string,

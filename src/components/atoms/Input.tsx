@@ -1,5 +1,6 @@
 import React from 'react';
 import { TInputProps } from '../../common/types';
+import { COMMON_INPUT_STYLES } from '../../common/constants';
 
 export default function Input({ value, name, handleChange }: TInputProps) {
   return (

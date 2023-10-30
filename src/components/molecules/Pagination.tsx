@@ -43,7 +43,7 @@ function Pagination({ pagination, setCurrentPage }: Props) {
         <div className="flex gap-2 justify-center">
           <Button onClick={() => setCurrentPage(0)}>First</Button>
           {pages.map((page) => (
-            <Button className={pagination.currentPage === page ? 'bg-neutral-800' : ''} key={page} onClick={() => setCurrentPage(page)}>
+            <Button className={pagination.currentPage === page ? '!bg-neutral-700' : ''} key={page} onClick={() => setCurrentPage(page)}>
               {page + 1}
             </Button>
           ))}

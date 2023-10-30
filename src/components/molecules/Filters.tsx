@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { TFilterConfig, TFilterConfigOptions } from '../../common/types';
+import { TFilterConfig } from '../../common/types';
 import Button from '../atoms/Button';
 import Select from '../atoms/Select';
 import Input from '../atoms/Input';
 
 type Props = {
-  filters: any;
+  filters: { [key: string]: string };
   fields: TFilterConfig[];
-  setFilters: (filters: { [key: string]: any }) => void;
+  setFilters: React.Dispatch<
+    React.SetStateAction<{
+      [key: string]: string;
+    }>
+  >;
 };
 
 function Filters({ filters, fields, setFilters }: Props) {
@@ -15,7 +19,7 @@ function Filters({ filters, fields, setFilters }: Props) {
     field: string,
     event?: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
   ) {
-    setFilters((curr: any) => {
+    setFilters((curr) => {
       const newFilters = !event
         ? { [field]: '' }
         : {
@@ -23,9 +27,9 @@ function Filters({ filters, fields, setFilters }: Props) {
             [field]: event.target.value,
           };
 
-      setFilters(newFilters);
-
       window.localStorage.setItem('filters', JSON.stringify(newFilters));
+
+      return newFilters;
     });
   }
 
