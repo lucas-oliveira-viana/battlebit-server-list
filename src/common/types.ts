@@ -48,6 +48,7 @@ export type TFilterConfig = {
     label: string;
     type: 'Text' | 'Select';
     options?: TFilterConfigOptions[]
+    placeholder?: string;
 }
 
 export type TInputProps = {
@@ -57,4 +58,5 @@ export type TInputProps = {
         name: string,
         event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
     ) => void;
+    placeholder?: string;
 };

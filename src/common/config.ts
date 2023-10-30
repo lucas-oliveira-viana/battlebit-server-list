@@ -3,7 +3,7 @@ import { TFilterConfig, TPagination, TServer } from "./types";
 export const INITIAL_PAGINATION_CONFIG: TPagination<TServer> = {
     data: [],
     currentPage: 0,
-    pageSize: 10,
+    pageSize: 15,
     totalPages: 0,
 };
 
@@ -12,6 +12,7 @@ export const FILTER_CONFIG: TFilterConfig[] = [
         name: 'Name',
         label: 'Name',
         type: 'Text',
+        placeholder: 'Enter the server name...'
     },
     {
         name: 'Region',

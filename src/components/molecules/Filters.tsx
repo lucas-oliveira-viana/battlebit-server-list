@@ -59,7 +59,7 @@ function Filters({ filters, fields, setFilters }: Props) {
                     handleChange={handleChange}
                   />
                 ) : (
-                  <Input value={value} name={field.name} handleChange={handleChange} />
+                  <Input value={value} name={field.name} placeholder={field.placeholder} handleChange={handleChange} />
                 )}
               </div>
             );
