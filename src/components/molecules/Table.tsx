@@ -14,7 +14,7 @@ function Table({ data, columns }: Props) {
   return (
     <>
       {data && columns && data.length && columns.length ? (
-        <table className="min-w-full bg-zinc-600 bg-opacity-50">
+        <table className="min-w-full bg-zinc-700 bg-opacity-50">
           <thead>
             <tr>
               {columns.map((column, index) => {
