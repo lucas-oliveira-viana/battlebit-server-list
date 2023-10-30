@@ -41,13 +41,27 @@ function Pagination({ pagination, setCurrentPage }: Props) {
     <>
       {pages.length && (
         <div className="flex gap-2 justify-center">
-          <Button onClick={() => setCurrentPage(0)}>First</Button>
+          <Button
+            onClick={() => setCurrentPage(0)}
+            disabled={pagination.currentPage === 0}
+          >
+            First
+          </Button>
           {pages.map((page) => (
-            <Button className={pagination.currentPage === page ? '!bg-neutral-700' : ''} key={page} onClick={() => setCurrentPage(page)}>
+            <Button
+              className={pagination.currentPage === page ? '!bg-zinc-700' : ''}
+              key={page}
+              onClick={() => setCurrentPage(page)}
+            >
               {page + 1}
             </Button>
           ))}
-          <Button onClick={() => setCurrentPage(pagination.totalPages - 1)}>Last</Button>
+          <Button
+            disabled={pagination.currentPage === pagination.totalPages - 1}
+            onClick={() => setCurrentPage(pagination.totalPages - 1)}
+          >
+            Last
+          </Button>
         </div>
       )}
     </>
